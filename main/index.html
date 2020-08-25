@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roman Numerals Converter</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/0efe4098a5.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="container">
@@ -13,7 +14,10 @@
         </header>
         <div id="converter">
             <div id="top">
-                <div id="screen"></div>
+                <div id="screen">
+                    <div id="line1">1234567890</div>
+                    <div id="line1">MMMCMXCIX</div>
+                </div>
             </div>
             <div id="keypad">
                 <div class="row">
@@ -34,7 +38,7 @@
                 <div class="row">
                     <button>0</button>
                     <button>C</button>
-                    <button></button>
+                    <button><span class="fas fa-backspace"> </span></button>
                 </div>
                 <div class="row">
                     <button class="romanize">romanize</button>

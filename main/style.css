@@ -50,7 +50,19 @@ button {
     margin: 10px auto;
     background-color: #708862;
     background-image: linear-gradient(to bottom, #708862, #425239);
+    border-radius: 2px;
     border: 1px solid #2e3729;
     width: 100%;
     height: 80px;
+    display: flex;
+    flex-direction: column;
+}
+#screen div {
+    text-align: right;
+    letter-spacing: 3px;
+    font-size: 22px;
+    padding: 4px 10px;
+    height: 50%;
+    font-family: 'Roboto Mono', monospace;
+
 }
