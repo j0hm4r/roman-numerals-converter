@@ -11,42 +11,63 @@ function convertToRoman(num) {
 }
 
 function addNumber(e) {
-    //alert(this.getAttribute("value"));
-    let el = document.getElementById("line2");
-    el.innerHTML = this.getAttribute("value");
+    let val = this.getAttribute("value");
+    numArr.push(val)
+    lineIn.innerHTML = numArr.join("");
 }
 
 function deleteLast(e) {
-    alert(this.getAttribute("value"));
+    if (numArr.length > 0) {
+        numArr.pop();
+        lineIn.innerHTML = numArr.join("");
+    }
 }
 
 function clearScreen(e) {
-    alert(this.getAttribute("value"));
+    lineIn.innerHTML = "";
+    lineOut.innerHTML = "";
+    numArr = [];
+}
+
+function romanize(e) {
+    let num = parseInt(numArr.join(""));
+    console.log(num);
+    if (num == "NaN") {
+        lineOut.innerHTML = "Not a number!";
+    } else if (num < numMin) {
+        lineOut.innerHTML = "Number too small!";
+    } else if (num > numMax) {
+        lineOut.innerHTML = "Number too large!";
+    } else {
+        lineOut.innerHTML = convertToRoman(num);
+    }
+    numArr = [];
 }
 
 function addListeners() {
     let tags = document.getElementsByTagName("BUTTON");
     for (let i = 0; i < tags.length; i++) {
-        if (/^\d{1}$/.test(tags[i].getAttribute("value"))) {
+        if (/^\d$/.test(tags[i].getAttribute("value"))) {
             tags[i].addEventListener("click", addNumber);
         } else if (tags[i].getAttribute("value") == "c") {
-            tags[i].addEventListener("click", deleteLast);
-        } else if (tags[i].getAttribute("value") == "bs") {
             tags[i].addEventListener("click", clearScreen);
+        } else if (tags[i].getAttribute("value") == "bs") {
+            tags[i].addEventListener("click", deleteLast);
         } else if (tags[i].getAttribute("value") == "romanize"){
-            tags[i].addEventListener("click", convertToRoman);
+            tags[i].addEventListener("click", romanize);
         }
     }
-alert(parseInt(5) + " | " + parseInt("vijf") + " | " + parseInt(5.678));
-alert(Number.isInteger(5) + " | " + Number.isInteger("5") + " | " + Number.isInteger(5.678));
 }
 
 if ((typeof window === 'undefined') || (typeof process === 'object')) {
-    // this is node
-    console.log("NODE!!!!");
+    // in node for testing
 } else {
-    // browser
-    alert("BROWSER");
+    // in browser
+    var numArr = [];
+    var lineIn = document.getElementById("lineIn");
+    var lineOut = document.getElementById("lineOut");
+    var numMin = 1; // incl
+    var numMax = 3999; // incl
     addListeners();
 }
 
