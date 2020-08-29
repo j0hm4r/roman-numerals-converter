@@ -31,7 +31,9 @@ function deleteLast(e) {
 function clearScreen(e) {
     lineIn.innerHTML = "";
     lineOut.innerHTML = "";
-    // numArr = [];
+    if (e) { // funtion was called by pressing a button and not from another function
+        numArr = [];
+    }
 }
 
 function validate() {
